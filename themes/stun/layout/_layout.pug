@@ -1,0 +1,63 @@
+-
+  var pjax = false;
+  var dataPjax = {};
+
+  if (theme.pjax && theme.pjax.enable) {
+    pjax = true;
+    dataPjax = { 'data-pjax': '' };
+  }
+
+doctype html
+html(lang=config.language)
+  head
+    include ./_partials/head/head.pug
+  body
+    div#container.container
+      header#header.header
+        div.header-inner
+          include ./_partials/header/header.pug
+
+      main#main.main
+        div.main-inner
+          div#content-wrap.content-wrap
+            div.content(class=`${is_home() ? 'content-home' : ''}`)
+              block content
+
+            if page.comments
+              include ./_partials/widgets/comments.pug
+
+          if theme.sidebar.enable
+            aside#sidebar.sidebar
+              div.sidebar-inner
+                include ./_partials/sidebar/sidebar.pug
+
+          div.clearfix
+
+      footer#footer.footer
+        div.footer-inner
+          include ./_partials/footer/footer.pug
+
+      include ./_partials/widgets/loading-bar.pug
+
+      if theme.back2top.enable
+        include ./_partials/widgets/back2top.pug
+    include ./_partials/search/index.pug
+
+    include ./_scripts/vendors.pug
+    include ./_third-party/search/index.pug
+
+    if pjax
+      include ./_third-party/pjax.pug
+
+      div#pjax-reload
+        include ./_third-party/math/index.pug
+        include ./_third-party/quicklink.pug
+        include ./_third-party/analytics/busuanzi.pug
+    else
+      include ./_third-party/math/index.pug
+      include ./_third-party/quicklink.pug
+      include ./_third-party/analytics/busuanzi.pug
+
+    include ./_third-party/comments/index.pug
+    include ./_third-party/advertising/index.pug
+    include ./_scripts/stun.pug

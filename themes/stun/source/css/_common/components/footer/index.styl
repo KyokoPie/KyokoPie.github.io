@@ -1,0 +1,55 @@
+.footer {
+  if (hexo-config('footer.icon.enable')) {
+    &-icon {
+      margin: 0 .3rem;
+      font-size: 1em;
+      color: convert(hexo-config('footer.icon.color') || '#ff0000');
+
+      if (hexo-config('footer.icon.animation')) {
+        animation: footer-heart-beat 1.2s infinite;
+      }
+    }
+  }
+
+  &-inner {
+    position: relative;
+    padding: 1rem;
+    font-size: $font-size-footer;
+    text-align: center;
+    color: $footer-text-color;
+    background-color: $footer-bg-color;
+
+    if (hexo-config('footer.bg_image.enable') && hexo-config('footer.bg_image.url')) {
+      z-index: $z-index-2;
+      background: url(hexo-config('footer.bg_image.url')) no-repeat center/cover;
+    }
+
+    if (hexo-config('footer.mask.enable')) {
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: $z-index-1;
+        width: 100%;
+        height: 100%;
+        background-color: alpha(#000, hexo-config('footer.mask.opacity'));
+      }
+    }
+
+    a {
+      color: $footer-link-color;
+      transition-property: color;
+      transition-ease();
+
+      &:hover {
+        color: $footer-link-hover-color;
+      }
+    }
+
+    .separator {
+      margin: 0 .5rem;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+nav.paginator
+  - var fa_prefix = theme.fa_prefix || 'fa'
+
+  if !is_post()
+    - var prev_text = `<i class="${fa_prefix} fa-chevron-left"></i>`
+    - var next_text = `<i class="${fa_prefix} fa-chevron-right"></i>`
+    div.paginator-inner!= paginator({ prev_text, next_text, mid_size: 1 })
+  else
+    div.paginator-post
+      if page.prev
+        div.paginator-post-prev
+          a.paginator-post-prev__a(href=url_for(page.prev.path))
+            i(class=`${fa_prefix} fa-chevron-left`)
+            span= page.prev.title || __("post.untitled")
+
+      if page.next
+        div.paginator-post-next
+          a.paginator-post-next__a(href=url_for(page.next.path))
+            span= page.next.title || __("post.untitled")
+            i(class=`${fa_prefix} fa-chevron-right`)

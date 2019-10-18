@@ -1,0 +1,12 @@
+if theme.disqus && theme.disqus.enable
+  div#comments.comments
+    div#disqus_thread
+else if theme.valine && theme.valine.enable
+  div#comments.comments
+    div#valine-container
+else if theme.gitalk && theme.gitalk.enable
+  div#comments.comments
+    div#gitalk-container
+else if theme.livere && theme.livere.enable
+  div#comments.comments
+    div#lv-container(data-id="city" data-uid=theme.livere.uid)

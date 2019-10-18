@@ -1,0 +1,124 @@
+.archive {
+  margin-left: 1rem;
+
+  &-total {
+    position: relative;
+    padding: 0 0 1.5rem 1.5rem;
+    font-size: calc(1em + 2px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 1em;
+      left: 0;
+      z-index: $z-index0;
+      border: .2rem solid $post-timeline-dot-color;
+      border-radius: 50%;
+      width: .9rem;
+      height: .9rem;
+      background-color: $white;
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 1em;
+      bottom: 0;
+      left: 0;
+      border-left: .3rem dashed $post-timeline-line-color;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      &::before {
+        border-color: $post-timeline-dot-hover-color;
+      }
+    }
+  }
+}
+
+.custom-page {
+  width: 100%;
+}
+
+.tagcloud,
+.category {
+  width: 100%;
+
+  &-total {
+    font-size: calc(1em + 10px);
+    text-align: center;
+    cursor: default;
+  }
+}
+
+.tagcloud {
+  text-align: center;
+
+  &-item {
+    a {
+      margin: 0 .4rem;
+      transition-property: color;
+      transition-ease();
+
+      &:hover {
+        color: $tag-hover-color !important;
+      }
+    }
+  }
+}
+
+.category {
+  &-list {
+    &-item {
+      &::before {
+        color: $category-list-dot-color;
+      }
+
+      &:hover {
+        &::before {
+          color: $category-list-dot-hover-color;
+        }
+      }
+    }
+
+    &-link {
+      font-size: 1em;
+      color: $category-link-color;
+      transition-property: color;
+      transition-ease();
+
+      &:hover {
+        color: $category-link-hover-color;
+      }
+    }
+
+    &-count {
+      margin-left: .3em;
+      font-size: $font-size-base - 1px;
+      color: $category-post-count-color;
+
+      &::before {
+        content: '(';
+      }
+
+      &::after {
+        content: ')';
+      }
+    }
+  }
+}
+
+.single-category,
+.single-tag {
+  &-name {
+    font-size: $font-size-base + 10px;
+    text-align: center;
+    cursor: default;
+
+    & > span:last-child {
+      color: $blue-light;
+    }
+  }
+}

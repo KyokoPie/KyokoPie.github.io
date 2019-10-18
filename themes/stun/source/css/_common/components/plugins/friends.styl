@@ -1,0 +1,55 @@
+.friends-plugin {
+  overflow: hidden;
+  max-width: 100%;
+
+  &__item {
+    display: block;
+    float: left;
+    padding: .5rem 1rem;
+    width: 50%;
+    height: 100px;
+    transition: background-color .3s;
+
+    &:hover {
+      background-color: alpha($blue-light, .1);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    avatar-width = 60px;
+
+    &-avatar {
+      display: inline-block;
+      border-radius: 50% !important;
+      width: avatar-width;
+      height: avatar-width;
+      vertical-align: middle;
+    }
+
+    info-margin = 20px;
+
+    &-info {
+      display: inline-block;
+      margin-left: info-margin;
+      padding-top: .6rem;
+      width: 'calc(100% - %s)' % (avatar-width + info-margin);
+      height: 100%;
+      vertical-align: middle;
+      color: $font-color;
+
+      &__name,
+      &__intro {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      &__intro {
+        font-size: .9em;
+        color: #999;
+      }
+    }
+  }
+}
